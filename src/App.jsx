@@ -1,54 +1,36 @@
-import { useState, useEffect } from 'react'
-import './App.css'
-import { getBooks } from './api/booksApi'
-import SearchBar from './components/SearchBar.jsx'
-import BookList from './components/BookList'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import {AuthProvider} from "./context/AuthContext.jsx";
+import HomePage from './pages/HomePage'
+import LoginPage from "./pages/LoginPage.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 function App() {
-  const [search, setSearch] = useState('')
-  const [bookList, setBookList] = useState([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    getBooks()
-        .then((data) => {
-          setBookList(data)
-        })
-        .catch((error) => {
-          console.error('Error cargando libros:', error)
-        })
-        .finally(() => {
-          setLoading(false)
-        })
-  }, [])
-
-  const filteredBooks = bookList.filter((book) =>
-      book.title.toLowerCase().includes(search.trim().toLowerCase())
-  )
-
-  return (
-      <div className="app">
-        <header className="header">
-          <h1>Librería Online</h1>
-
-          <SearchBar search={search} setSearch={setSearch} />
-        </header>
-
-        <main className="book-list">
-          {loading ? (
-              <p>Cargando libros...</p>
-          ) : (
-              <>
-                <BookList books={filteredBooks} />
-
-                {filteredBooks.length === 0 && (
-                    <p>No se encontraron libros.</p>
-                )}
-              </>
-          )}
-        </main>
-      </div>
-  )
+    return (
+        <AuthProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route
+                        path="/profile"
+                        element={
+                            <ProtectedRoute>
+                                <p>Profile (placeholder)</p>
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/checkout"
+                        element={
+                            <ProtectedRoute>
+                                <p>Checkout (placeholder)</p>
+                            </ProtectedRoute>
+                        }
+                    />
+                </Routes>
+            </BrowserRouter>
+        </AuthProvider>
+    )
 }
 
 export default App
