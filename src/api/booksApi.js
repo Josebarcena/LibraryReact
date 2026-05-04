@@ -1,9 +1,9 @@
 import { books } from "../data/books"
 
-export const getBooks = () => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(books)
-        }, 500)
-    })
+export function getBooks() {
+    return Promise.resolve(books)
+}
+
+export function getBookById(id) {
+    return books.find((book) => String(book.id) === String(id))
 }

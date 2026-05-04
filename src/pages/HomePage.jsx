@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { getBooks } from '../api/booksApi'
 import SearchBar from '../components/SearchBar.jsx'
 import BookList from '../components/BookList'
-
+import Cart from "../components/Cart.jsx"
+import "./HomePage.css"
 function HomePage() {
     const [search, setSearch] = useState('')
     const [bookList, setBookList] = useState([])
@@ -32,18 +33,22 @@ function HomePage() {
                 <SearchBar search={search} setSearch={setSearch} />
             </header>
 
-            <main className="book-list">
-                {loading ? (
-                    <p>Cargando libros...</p>
-                ) : (
-                    <>
-                        <BookList books={filteredBooks} />
-                        {filteredBooks.length === 0 && (
-                            <p>No se encontraron libros.</p>
-                        )}
-                    </>
-                )}
-            </main>
+            <div className="page-layout">
+                <main className="book-list">
+                    {loading ? (
+                        <p>Cargando libros...</p>
+                    ) : (
+                        <>
+                            <BookList books={filteredBooks} />
+                            {filteredBooks.length === 0 && (
+                                <p>No se encontraron libros.</p>
+                            )}
+                        </>
+                    )}
+                </main>
+
+                <Cart />
+            </div>
         </div>
     )
 }

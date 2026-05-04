@@ -1,0 +1,19 @@
+
+.page-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.book-list {
+    flex: 1;
+}
+
+.cart {
+    width: 280px;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+    position: sticky;
+    top: 1rem;
+}
