@@ -13,7 +13,7 @@ function BookDetail() {
     return (
         <div className="page-layout">
             <main>
-                <Link to="/">Volver</Link>
+                <Link to="/home">Volver</Link>
 
                 <h1>{book.title}</h1>
                 <img src={book.image} alt={book.title} />

@@ -1,11 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import {AuthProvider} from "./context/AuthContext.jsx";
+import LandingPage from './pages/LandingPage';
 import HomePage from './pages/HomePage';
 import LoginPage from "./pages/LoginPage.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import BookList from "./components/BookList";
 import BookDetail from "./components/BookDetail";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
+import Header from "./components/Header.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
 
 function App() {
@@ -13,8 +16,10 @@ function App() {
         <AuthProvider>
             <CartProvider>
                 <BrowserRouter>
+                    <Header />
                     <Routes>
-                        <Route path="/" element={<HomePage />} />
+                        <Route path="/" element={<LandingPage />} />
+                        <Route path="/home" element={<HomePage />} />
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/books" element={<BookList />} />
                         <Route path="/books/:id" element={<BookDetail />} />
@@ -22,7 +27,7 @@ function App() {
                             path="/profile"
                             element={
                                 <ProtectedRoute>
-                                    <p>Profile (placeholder)</p>
+                                    <ProfilePage />
                                 </ProtectedRoute>
                             }
                         />

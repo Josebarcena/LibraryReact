@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { useCart } from "../context/CartContext.jsx"
 
 function CheckoutPage() {
-    const { cart, clearCart } = useCart()
+    const { cart, clearCart, addOrder } = useCart()
     const navigate = useNavigate()
 
     const total = cart.reduce((sum, item) => {
@@ -11,8 +11,9 @@ function CheckoutPage() {
 
     const handlePayment = () => {
         window.alert("El pedido se ha realizado correctamente")
+        addOrder(cart)
         clearCart()
-        navigate("/")
+        navigate("/home")
     }
 
     if (cart.length === 0) {

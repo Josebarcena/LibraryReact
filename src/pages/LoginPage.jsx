@@ -21,7 +21,7 @@ function LoginPage() {
         if (found) {
             console.log('Usuario encontrado:', found)
             login(found)
-            navigate('/')
+            navigate('/profile')
         } else {
             setError('Email o contraseña incorrectos')
         }

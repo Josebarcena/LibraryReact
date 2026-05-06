@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { getBooks } from '../api/booksApi'
 import SearchBar from '../components/SearchBar.jsx'
 import BookList from '../components/BookList'
 import Cart from "../components/Cart.jsx"
+import GenreFilter from '../components/GenreFilter.jsx'
 import "./HomePage.css"
 function HomePage() {
     const [search, setSearch] = useState('')
     const [bookList, setBookList] = useState([])
     const [loading, setLoading] = useState(true)
+    const [selectedGenres, setSelectedGenres] = useState([])
 
     useEffect(() => {
         getBooks()
@@ -22,9 +24,22 @@ function HomePage() {
             })
     }, [])
 
-    const filteredBooks = bookList.filter((book) =>
-        book.title.toLowerCase().includes(search.trim().toLowerCase())
+    const genres = useMemo(
+        () => [...new Set(bookList.map((book) => book.genre))],
+        [bookList]
     )
+
+    const toggleGenre = (genre) => {
+        setSelectedGenres((prev) =>
+            prev.includes(genre) ? prev.filter((g) => g !== genre) : [...prev, genre]
+        )
+    }
+
+    const filteredBooks = bookList.filter((book) => {
+        const matchesSearch = book.title.toLowerCase().includes(search.trim().toLowerCase())
+        const matchesGenre = selectedGenres.length === 0 || selectedGenres.includes(book.genre)
+        return matchesSearch && matchesGenre
+    })
 
     return (
         <div className="app">
@@ -34,6 +49,12 @@ function HomePage() {
             </header>
 
             <div className="page-layout">
+                <GenreFilter
+                    genres={genres}
+                    selectedGenres={selectedGenres}
+                    onToggle={toggleGenre}
+                />
+
                 <main className="book-list">
                     {loading ? (
                         <p>Cargando libros...</p>
