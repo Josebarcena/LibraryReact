@@ -1,11 +1,13 @@
-// components/BookList.jsx
-import BookCard from './BookCard';
+import { Link } from "react-router-dom"
+import BookCard from "./BookCard"
 
 function BookList({ books }) {
     return (
         <div className="book-list">
             {books.map((book) => (
-                <BookCard key={book.id} book={book} />
+                <Link to={`/books/${book.id}`} key={book.id}>
+                    <BookCard book={book} />
+                </Link>
             ))}
         </div>
     );
