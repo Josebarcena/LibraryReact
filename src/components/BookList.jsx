@@ -10,7 +10,7 @@ function BookList({ books }) {
                 </Link>
             ))}
         </div>
-    )
+    );
 }
 
-export default BookList
+export default BookList;

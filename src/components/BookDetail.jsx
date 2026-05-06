@@ -28,7 +28,7 @@ function BookDetail() {
 
             <Cart />
         </div>
-    )
+    );
 }
 
-export default BookDetail
+export default BookDetail;

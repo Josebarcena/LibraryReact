@@ -1,0 +1,43 @@
+body {
+    /*    
+    padding: 0;*/
+}
+
+.buttonBack{
+  display: flex;
+  flex-direction: row;
+    background: purple;
+}
+
+.bookView {
+    display: grid;
+    grid-template-columns: 320px 1fr; /* La imagen ocupa 320px, la descripción el resto */
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 3rem;
+}
+
+.bookFront {
+    flex: 0 0 250px;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: red;
+}
+
+.bookDescription {
+    flex: 0 100px 250px;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: blue;
+}
+
+.bookBuy {
+    flex: 0 0 250px;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: yellow;
+}

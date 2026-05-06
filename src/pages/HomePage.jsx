@@ -24,7 +24,7 @@ function HomePage() {
 
     const filteredBooks = bookList.filter((book) =>
         book.title.toLowerCase().includes(search.trim().toLowerCase())
-    )
+    );
 
     return (
         <div className="app">
@@ -50,7 +50,7 @@ function HomePage() {
                 <Cart />
             </div>
         </div>
-    )
+    );
 }
 
-export default HomePage
+export default HomePage;

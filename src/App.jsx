@@ -38,7 +38,7 @@ function App() {
                 </BrowserRouter>
             </CartProvider>
         </AuthProvider>
-    )
+    );
 }
 
-export default App
+export default App;
