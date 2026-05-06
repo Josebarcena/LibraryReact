@@ -1,4 +1,5 @@
-import BookCard from "./BookCard"
+// components/BookList.jsx
+import BookCard from './BookCard';
 
 function BookList({ books }) {
     return (
@@ -7,7 +8,7 @@ function BookList({ books }) {
                 <BookCard key={book.id} book={book} />
             ))}
         </div>
-    )
+    );
 }
 
-export default BookList
+export default BookList;

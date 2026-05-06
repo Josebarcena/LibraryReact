@@ -1,0 +1,47 @@
+.checkout-container {
+    display: grid;
+    grid-template-columns: 60% 40%;
+/*    gap: 2rem;
+    max-width: 1200px;*/
+/*    margin: 1px auto;*/
+    margin-top: 3rem;
+    background-color: green;
+}
+
+.checkout-details {
+    margin-top: 3rem;
+    background-color: grey;
+    margin-left: 30%;
+}
+
+.checkout-summary {
+    background-color: blue;
+}
+
+.checkout-book {
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: 50px auto;
+}
+
+.checkout-bookimage {
+    background-color: fuchsia;
+/*    margin-left: 20%;
+    margin-right: 80%;*/
+}
+
+.checkout-bookinfo {
+    background-color: orange;
+}
+.checkout-separator {
+    border-top:1px solid #000
+}
+
+.checkout-details input{
+    width: 100%;          /* el input y el botón ocupan todo el ancho de la celda */
+    box-sizing: border-box; /* evita que padding/borde rompan el ancho */
+}
+
+.invalid{
+border:1px solid #ff0000
+}
