@@ -18,7 +18,7 @@ function CheckoutPage() {
 
     if (cart.length === 0) {
         return (
-            <div>
+            <div className="checkout-page">
                 <h1>Checkout</h1>
                 <p>No hay libros en el carrito.</p>
             </div>
@@ -26,7 +26,7 @@ function CheckoutPage() {
     }
 
     return (
-        <div>
+        <div className="checkout-page">
             <h1>Checkout</h1>
 
             <h2>Resumen del pedido</h2>

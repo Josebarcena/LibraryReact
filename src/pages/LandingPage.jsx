@@ -13,8 +13,8 @@ function LandingPage() {
     }, [user, navigate])
 
     return (
-        <div>
-            <h1>Bienvenido a la Librería Online</h1>
+        <div className="landing-page">
+            <h1>Bienvenido a Relatos de Papel</h1>
 
             <button onClick={() => navigate('/login')}>
                 Iniciar sesión

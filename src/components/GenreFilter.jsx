@@ -1,6 +1,6 @@
 function GenreFilter({ genres, selectedGenres, onToggle }) {
     return (
-        <aside>
+        <aside className="genre-filter">
             <h3>Géneros</h3>
             <ul>
                 {genres.map((genre) => (

@@ -44,7 +44,7 @@ function HomePage() {
     return (
         <div className="app">
             <header className="header">
-                <h1>Librería Online</h1>
+                <h1>Relatos de Papel</h1>
                 <SearchBar search={search} setSearch={setSearch} />
             </header>
 

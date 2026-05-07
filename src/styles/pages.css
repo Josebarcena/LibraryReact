@@ -1,0 +1,304 @@
+/* ============================================================
+   PAGES
+   ============================================================ */
+
+/* ============================================================
+   LANDING PAGE
+   ============================================================ */
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 5rem 2rem;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.landing-page h1 {
+  font-size: 2.75rem;
+  letter-spacing: -1px;
+  max-width: 560px;
+  line-height: 1.15;
+}
+
+.landing-page button {
+  padding: 0.7rem 1.75rem;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-sm);
+}
+.landing-page button:first-of-type {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.landing-page button:first-of-type:hover { opacity: 0.88; }
+
+/* ============================================================
+   LOGIN PAGE
+   ============================================================ */
+.app > main {
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 0;
+  flex: 1;
+}
+
+.app > main form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.app > main form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: left;
+}
+
+.app > main form label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+.app > main form button[type="submit"] {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  padding: 0.65rem;
+  font-size: 0.9375rem;
+}
+.app > main form button[type="submit"]:hover { opacity: 0.88; }
+
+/* ============================================================
+   BOOK DETAIL PAGE
+   ============================================================ */
+.page-layout > main:not(.book-list) {
+  flex: 1;
+  min-width: 0;
+  padding: 1.5rem 0 2rem;
+}
+
+.page-layout > main:not(.book-list) > a {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.15s;
+  margin-bottom: 1.5rem;
+}
+.page-layout > main:not(.book-list) > a:hover { color: var(--accent); }
+
+/* Layout imagen izquierda + info derecha */
+.book-detail-content {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+.book-detail-content img {
+  width: 220px;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  object-fit: cover;
+}
+
+.book-detail-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-detail-info h1 {
+  font-size: 1.75rem;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+.book-detail-info p {
+  font-size: 0.9375rem;
+  color: var(--text);
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.book-detail-info p:first-of-type { border-top: 1px solid var(--border); }
+
+.book-detail-info button {
+  margin-top: 1.75rem;
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  padding: 0.7rem 1.75rem;
+  font-size: 0.9375rem;
+  align-self: flex-start;
+}
+.book-detail-info button:hover { opacity: 0.88; }
+
+@media (max-width: 600px) {
+  .book-detail-content {
+    flex-direction: column;
+  }
+  .book-detail-content img {
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+}
+
+/* ============================================================
+   CHECKOUT PAGE
+   ============================================================ */
+.checkout-page {
+  max-width: 640px;
+  margin: 2rem auto;
+  padding: 0 1.5rem 3rem;
+  width: 100%;
+}
+
+.checkout-page > h1 {
+  margin-bottom: 0.25rem;
+}
+
+.checkout-page > h2:first-of-type {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  margin: 1.5rem 0 1rem;
+}
+
+.checkout-page > div {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  background: var(--bg);
+}
+
+.checkout-page > div h3 {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.checkout-page > div p {
+  font-size: 0.875rem;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.checkout-page > h2:last-of-type {
+  font-size: 1.25rem;
+  color: var(--text-h);
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 2px solid var(--border);
+}
+
+.checkout-page > button {
+  display: block;
+  width: 100%;
+  margin-top: 1.5rem;
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: var(--radius-sm);
+}
+.checkout-page > button:hover { opacity: 0.88; }
+
+/* ============================================================
+   PROFILE PAGE
+   ============================================================ */
+.profile-page {
+  max-width: 720px;
+  margin: 2rem auto;
+  padding: 0 1.5rem 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.profile-page > h1 {
+  margin-bottom: 0;
+}
+
+.profile-page > a {
+  font-size: 0.875rem;
+  color: var(--text);
+  align-self: flex-start;
+  margin-top: -1.25rem;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.profile-page > a:hover { color: var(--accent); }
+
+.profile-page section {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  background: var(--bg);
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-page section > h2 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text);
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+
+.profile-page section > p {
+  font-size: 0.9375rem;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.profile-page section > p strong {
+  color: var(--text-h);
+  margin-right: 0.25rem;
+}
+
+/* Orders */
+.profile-page section > div {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.875rem 1rem;
+  margin-bottom: 0.75rem;
+  background: var(--code-bg);
+}
+.profile-page section > div:last-child { margin-bottom: 0; }
+
+.profile-page section > div > p {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-h);
+  margin-bottom: 0.5rem;
+}
+
+.profile-page section > div ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.profile-page section > div li {
+  font-size: 0.8rem;
+  color: var(--text);
+}
