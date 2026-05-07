@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { users } from '../data/users'
+import logo from '../assets/Relatos_de_papel_logo.png'
 
 function LoginPage() {
     const [email, setEmail] = useState('')
@@ -29,12 +30,9 @@ function LoginPage() {
 
     return (
         <div className="app">
-            <header className="header">
-                <h1>Iniciar sesión</h1>
-            </header>
-
             <main>
                 <form onSubmit={handleSubmit}>
+                    <img src={logo} alt="Logo" style={{ display: 'block', margin: '0 auto 1rem', height: '5rem' }} />
                     <div>
                         <label>Email</label>
                         <input

@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import logo from '../assets/Relatos_de_papel_logo.png'
 
 function Header() {
     const { user, logout } = useAuth()
@@ -13,6 +14,7 @@ function Header() {
     return (
         <header className="site-header">
             <span onClick={() => navigate('/home')} style={{ cursor: 'pointer' }}>
+                <img src={logo} alt="Logo" style={{ height: '2rem', verticalAlign: 'middle', marginRight: '0.5rem' }} />
                 Relatos de Papel
             </span>
 
