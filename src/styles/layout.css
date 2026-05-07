@@ -1,0 +1,126 @@
+/* ============================================================
+   LAYOUT — Header global, page wrappers, columnas
+   ============================================================ */
+
+/* --- Site Header (Header.jsx) --- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  height: 60px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  flex-shrink: 0;
+}
+
+.site-header > span {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.3px;
+  user-select: none;
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-header nav > span {
+  font-size: 0.875rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.site-header nav > span:hover { color: var(--text-h); }
+
+/* --- Wrapper de páginas (.app) --- */
+.app {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0 1.5rem 2rem;
+}
+
+/* Sub-header dentro de páginas (.header) */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0 1rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+.header h1 {
+  font-size: 1.4rem;
+  white-space: nowrap;
+}
+
+/* --- Layout de 3 columnas (filtro | libros | carrito) --- */
+.page-layout {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  flex: 1;
+  padding: 1.5rem;
+}
+
+/* Dentro de .app ya hay padding horizontal — se elimina la duplicidad */
+.app .page-layout {
+  padding-inline: 0;
+}
+
+/* Columna central de libros en HomePage */
+main.book-list {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Grid de tarjetas de libro (BookList.jsx) */
+div.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+div.book-list a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 960px) {
+  .page-layout {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .genre-filter {
+    width: 100%;
+    position: static;
+  }
+
+  .cart {
+    width: 100%;
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header { padding: 0 1rem; }
+
+  .app { padding: 0 1rem 2rem; }
+
+  div.book-list {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+}

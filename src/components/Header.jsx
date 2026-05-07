@@ -11,9 +11,9 @@ function Header() {
     }
 
     return (
-        <header>
+        <header className="site-header">
             <span onClick={() => navigate('/home')} style={{ cursor: 'pointer' }}>
-                Librería Online
+                Relatos de Papel
             </span>
 
             <nav>

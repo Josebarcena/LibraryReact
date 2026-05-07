@@ -13,17 +13,23 @@ function BookDetail() {
     return (
         <div className="page-layout">
             <main>
-                <Link to="/home">Volver</Link>
+                <Link to="/home">← Volver</Link>
 
-                <h1>{book.title}</h1>
-                <img src={book.image} alt={book.title} />
-                <p>Autor: {book.author}</p>
-                <p>Año: {book.year}</p>
-                <p>Género: {book.genre}</p>
+                <div className="book-detail-content">
+                    <img src={book.image} alt={book.title} />
 
-                <button onClick={() => addToCart(book)}>
-                    Añadir al carrito
-                </button>
+                    <div className="book-detail-info">
+                        <h1>{book.title}</h1>
+                        <p>Autor: {book.author}</p>
+                        <p>Año: {book.year}</p>
+                        <p>Género: {book.genre}</p>
+                        <p>Precio: {book.price} €</p>
+
+                        <button onClick={() => addToCart(book)}>
+                            Añadir al carrito
+                        </button>
+                    </div>
+                </div>
             </main>
 
             <Cart />

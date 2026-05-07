@@ -7,7 +7,7 @@ function ProfilePage() {
     const { orders } = useCart()
 
     return (
-        <div>
+        <div className="profile-page">
             <h1>Mi perfil</h1>
             <Link to="/home">← Ir al inicio</Link>
 
