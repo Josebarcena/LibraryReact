@@ -2,6 +2,40 @@
    COMPONENTS
    ============================================================ */
 
+/* --- PriceTag --- */
+.price-tag {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* --- OrderCard --- */
+.order-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.875rem 1rem;
+  margin-bottom: 0.75rem;
+  background: var(--code-bg);
+}
+.order-card:last-child { margin-bottom: 0; }
+
+.order-card > p {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-h);
+  margin-bottom: 0.5rem;
+}
+
+.order-card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.order-card li {
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
 /* --- SearchBar --- */
 .search-bar {
   width: 260px;
