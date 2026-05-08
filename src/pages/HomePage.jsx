@@ -4,7 +4,7 @@ import SearchBar from '../components/SearchBar.jsx'
 import BookList from '../components/BookList'
 import Cart from "../components/Cart.jsx"
 import GenreFilter from '../components/GenreFilter.jsx'
-import "./HomePage.css"
+
 function HomePage() {
     const [search, setSearch] = useState('')
     const [bookList, setBookList] = useState([])
