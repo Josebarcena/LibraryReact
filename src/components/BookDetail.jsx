@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom"
 import { getBookById } from "../api/booksApi.js"
 import { useCart } from "../context/CartContext.jsx"
 import Cart from "../components/Cart.jsx"
+import PriceTag from "../components/PriceTag.jsx"
 
 function BookDetail() {
     const { id } = useParams()
@@ -23,7 +24,7 @@ function BookDetail() {
                         <p>Autor: {book.author}</p>
                         <p>Año: {book.year}</p>
                         <p>Género: {book.genre}</p>
-                        <p>Precio: {book.price} €</p>
+                        <p>Precio: <PriceTag price={book.price} /></p>
 
                         <button onClick={() => addToCart(book)}>
                             Añadir al carrito

@@ -224,10 +224,9 @@
    PROFILE PAGE
    ============================================================ */
 .profile-page {
-  max-width: 720px;
-  margin: 2rem auto;
-  padding: 0 1.5rem 3rem;
-  width: 100%;
+  flex: 1;
+  min-width: 0;
+  padding: 1.5rem 0 3rem;
   display: flex;
   flex-direction: column;
   gap: 1.75rem;
@@ -276,29 +275,3 @@
   margin-right: 0.25rem;
 }
 
-/* Orders */
-.profile-page section > div {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 0.875rem 1rem;
-  margin-bottom: 0.75rem;
-  background: var(--code-bg);
-}
-.profile-page section > div:last-child { margin-bottom: 0; }
-
-.profile-page section > div > p {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-h);
-  margin-bottom: 0.5rem;
-}
-
-.profile-page section > div ul {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-.profile-page section > div li {
-  font-size: 0.8rem;
-  color: var(--text);
-}
