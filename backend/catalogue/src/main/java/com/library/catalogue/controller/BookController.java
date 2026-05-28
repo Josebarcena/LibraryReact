@@ -18,8 +18,14 @@ public class BookController {
     }
 
     @GetMapping
-    public List<Book> getAllBooks() {
-        return service.getAllBooks();
+    public List<Book> searchBooks(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String author,
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) Boolean visible
+    ) {
+
+        return service.searchBooks(title, author, category, visible);
     }
 
     @GetMapping("/{id}")
@@ -44,5 +50,9 @@ public class BookController {
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
         service.deleteBook(id);
         return ResponseEntity.noContent().build();
+    }
+    @PatchMapping("/{id}")
+    public Book patchBook(@PathVariable Long id, @RequestBody Book book) {
+        return service.patchBook(id, book);
     }
 }
