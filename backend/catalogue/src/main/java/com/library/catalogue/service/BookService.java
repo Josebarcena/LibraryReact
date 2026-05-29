@@ -3,7 +3,10 @@ package com.library.catalogue.service;
 import com.library.catalogue.entity.Book;
 import com.library.catalogue.repository.BookRepository;
 import org.springframework.stereotype.Service;
-
+import org.springframework.data.jpa.domain.Specification;
+import jakarta.persistence.criteria.Predicate;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,25 +39,59 @@ public class BookService {
     public void deleteBook(Long id) {
         repository.deleteById(id);
     }
-    public List<Book> searchBooks(String title, String author, String category, Boolean visible) {
+    public List<Book> searchBooks(
+            String title,
+            String author,
+            LocalDate publicationDate,
+            String category,
+            String isbn,
+            Integer rating,
+            Boolean visible
+    ) {
+        Specification<Book> specification = (root, query, criteriaBuilder) -> {
+            List<Predicate> predicates = new ArrayList<>();
 
-        if (title != null) {
-            return repository.findByTitleContainingIgnoreCase(title);
-        }
+            if (title != null && !title.isBlank()) {
+                predicates.add(criteriaBuilder.like(
+                        criteriaBuilder.lower(root.get("title")),
+                        "%" + title.toLowerCase() + "%"
+                ));
+            }
 
-        if (author != null) {
-            return repository.findByAuthorContainingIgnoreCase(author);
-        }
+            if (author != null && !author.isBlank()) {
+                predicates.add(criteriaBuilder.like(
+                        criteriaBuilder.lower(root.get("author")),
+                        "%" + author.toLowerCase() + "%"
+                ));
+            }
 
-        if (category != null) {
-            return repository.findByCategoryContainingIgnoreCase(category);
-        }
+            if (publicationDate != null) {
+                predicates.add(criteriaBuilder.equal(root.get("publicationDate"), publicationDate));
+            }
 
-        if (visible != null) {
-            return repository.findByVisible(visible);
-        }
+            if (category != null && !category.isBlank()) {
+                predicates.add(criteriaBuilder.like(
+                        criteriaBuilder.lower(root.get("category")),
+                        "%" + category.toLowerCase() + "%"
+                ));
+            }
 
-        return repository.findAll();
+            if (isbn != null && !isbn.isBlank()) {
+                predicates.add(criteriaBuilder.like(root.get("isbn"), "%" + isbn + "%"));
+            }
+
+            if (rating != null) {
+                predicates.add(criteriaBuilder.equal(root.get("rating"), rating));
+            }
+
+            if (visible != null) {
+                predicates.add(criteriaBuilder.equal(root.get("visible"), visible));
+            }
+
+            return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+        };
+
+        return repository.findAll(specification);
     }
     public Book patchBook(Long id, Book partialBook) {
         Book existingBook = repository.findById(id).orElseThrow(() -> new RuntimeException("Book not found"));

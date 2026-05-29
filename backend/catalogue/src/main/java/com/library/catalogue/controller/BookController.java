@@ -2,9 +2,11 @@ package com.library.catalogue.controller;
 
 import com.library.catalogue.entity.Book;
 import com.library.catalogue.service.BookService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -21,11 +23,13 @@ public class BookController {
     public List<Book> searchBooks(
             @RequestParam(required = false) String title,
             @RequestParam(required = false) String author,
+            @RequestParam(required = false) LocalDate publicationDate,
             @RequestParam(required = false) String category,
+            @RequestParam(required = false) String isbn,
+            @RequestParam(required = false) Integer rating,
             @RequestParam(required = false) Boolean visible
     ) {
-
-        return service.searchBooks(title, author, category, visible);
+        return service.searchBooks(title, author, publicationDate, category, isbn, rating, visible);
     }
 
     @GetMapping("/{id}")
@@ -36,7 +40,7 @@ public class BookController {
     }
 
     @PostMapping
-    public Book createBook(@RequestBody Book book) {
+    public Book createBook(@Valid @RequestBody Book book) {
         return service.createBook(book);
     }
 
