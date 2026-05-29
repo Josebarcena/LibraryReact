@@ -71,14 +71,21 @@ public class GatewayProxyController {
                 .bodyToMono(String.class);
     }
     @PostMapping("/orders/create")
-    public Mono<String> createOrder(@RequestBody String body) {
+    public Mono<ResponseEntity<String>> createOrder(@RequestBody String body) {
         return webClientBuilder.build()
                 .post()
                 .uri("lb://orders/api/orders")
                 .header("Content-Type", "application/json")
                 .bodyValue(body)
-                .retrieve()
-                .bodyToMono(String.class);
+                .exchangeToMono(response ->
+                        response.bodyToMono(String.class)
+                                .defaultIfEmpty("")
+                                .map(responseBody ->
+                                        ResponseEntity
+                                                .status(response.statusCode())
+                                                .body(responseBody)
+                                )
+                );
     }
 
 }
